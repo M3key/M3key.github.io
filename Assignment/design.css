@@ -1,0 +1,7 @@
+body {
+   background-color: aqua;
+}
+
+#after_submit {
+   visibility: hidden;
+}
