@@ -1,0 +1,23 @@
+@font-face {
+   font-family: Anton, sans-serif;
+   src: url('../Assignment/font/Anton-Regular.ttf');
+   font-weight: 500;
+   font-style: normal;
+}
+
+.Moodring {
+   font-family: Anton, sans-serif;
+   position: relative;
+   left: 800px;
+}
+
+.tap {
+   position: relative;
+   left: 840px;
+}
+
+.statment {
+   position: relative;
+   left: 840px;
+   bottom: -200px;
+}

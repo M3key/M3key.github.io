@@ -1,25 +1,80 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script>
+            <link rel="stylesheet" href="../Assignment/mood.css">
+            <style>
 
+body {
+   background-color: #fff278;
+}
+</style>
+    </head>
+    <body style="background-color: rgb(84, 101, 255);">
+
+            <h1 class="Moodring">My Mood Ring</h1>
+
+        <div class="tap">
+            <button id="moodButton" onclick="changeMood()" value="1">Change my mood</button>
+        </div>
+          <div class="statment">
+            <div id="moodStatement">Rainy Day Feeling</div>
+            </div>
+            <img id="theImage" src="/Assignment/img/redhulk.jpg">
             
-           for (age = 0; age < 10; age++) {
-                document.write('age is',age);
-
+        
+        
+        <script>
+        text =""
+        function changeMood(){
+            button = document.getElementById("moodButton")
+            if (button.value == '0') {
+                text ="Rainy Day Feeling";
+                document.getElementById('moodStatement').innerHTML = text
+                document.body.style.backgroundColor = "#5465FF";
+                button.value = '1';
             }
 
-            
-            
-            
+            else if( button.value == "1") {
+            text ="angry Feeling";
+            document.getElementById('moodStatement').innerHTML = text;
+            document.body.style.backgroundColor = "#ff3d3d";
+            button.value = "2";
+        }
+
+        else if( button.value == "2") {
+            text ="Depressed";
+            document.getElementById('moodStatement').innerHTML = text;
+            document.body.style.backgroundColor = "#010047";
+            button.value = "3";
+        }
+
+        else if( button.value == "3") {
+            text ="Love feeling";
+            document.getElementById('moodStatement').innerHTML = text;
+            document.body.style.backgroundColor = "#ff4cb4";
+            button.value = "4";
+        }
+
+        else if( button.value == "4") {
+            text ="Sick feeling";
+            document.getElementById('moodStatement').innerHTML = text;
+            document.body.style.backgroundColor = "#279648";
+            button.value = "5";
+        }
+            else {
+                text = "Sunshiny feeling";
+                document.getElementById('moodStatement').innerHTML = text;
+                        document.body.style.backgroundColor = "#FFF278";
+                button.value = '0';
+            }
+
+    }
+
+   
+        
+        
         </script>
-    </head>
-    <body>
+        
+        </body>
 
-
-
-
-
-
-    </body>
 </html>
