@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<title>move object - game loop</title>
+
+
+    </head>
+    <body>
+<canvas id="canvas" width="600" height="500" style="border: 1px solid #ccc;" tabindex="1"></canvas>
+<script>
+var canvas = document.getElementById("canvas");
+var context = canvas.getContext("2d");
+
+canvas.addEventListener("keydown", keyDown);
+canvas.addEventListener("mousedown", mouseDown);
+//Plane control
+// fire array takes the missle.png and draws on the screen
+function Plane(x, y){
+    this.x = x;
+    this.y = y;
+    this.img = new Image();
+    this.img.src = "fighter.png";
+    this.v = 5;
+    this.fires = [];
+}
+
+// with the for loop every time you click or mouse click the fucntion draws the missle on the canvas
+Plane.prototype.draw = function() {
+    context.drawImage(this.img, this.x, this.y);
+    
+    for (var i=0; i<this.fires.length; i++){
+        this.fires[i].draw();
+    }
+    
+
+}
+Plane.prototype.fire = function(){
+    var f = new Fire(this.x, this.y);
+    this.fires.push(f);
+}
+
+Plane.prototype.update = function(){
+    for (var i=0; i<this.fires.length; i++){
+        this.fires[i].update();
+    }
+} 
+
+//Fire
+
+function Fire(x, y){
+    this.x = x;
+    this.y = y;
+    this.v = 10;
+    this.img = new Image();
+    this.img.src = "missile.png";
+}
+Fire.prototype.draw = function() {
+    context.drawImage(this.img, this.x, this.y);
+
+}
+
+
+Fire.prototype.update = function(){
+    this.y = this.y - this.v;
+    console.log("fire update");
+}
+
+// The update Function updates the location of the fighter jet & missles as i provided the canvas with input 
+// I used the up/down/right/left keys
+
+var h = new Plane(100, 100);
+function gameLoop(){
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    h.draw();
+    h.update();
+}
+
+setInterval(gameLoop, 20);
+
+function keyDown(evt){
+    switch(evt.keyCode){
+        case 37: h.x = h.x - h.v; break;
+        case 38: h.y = h.y - h.v; break;
+        case 39: h.x = h.x + h.v; break;
+        case 40: h.y = h.y + h.v; break;
+    }
+}
+function mouseDown(evt){
+    h.fire();
+}
+
+</script>
+
+    </body>
+    </html>
